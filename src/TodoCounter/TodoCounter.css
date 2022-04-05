@@ -3,4 +3,13 @@
   text-align: center;
   margin: 0;
   padding: 48px;
+  &--count {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1e1e1f;
+  }
+}
+
+.TodoCounter--loading {
+  opacity: 25%;
 }

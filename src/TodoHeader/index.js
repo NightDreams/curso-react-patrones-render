@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Children, cloneElement } from "react";
 
-function TodoHeader({ children }) {
+function TodoHeader({ children, loading }) {
   return (
     <header>
-      {children}
+      {Children.toArray(children).map((child) =>
+        cloneElement(child, { loading })
+      )}
     </header>
-  )
+  );
 }
 
-export { TodoHeader }
-
-
+export { TodoHeader };
