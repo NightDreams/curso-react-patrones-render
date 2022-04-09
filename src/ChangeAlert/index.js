@@ -1,12 +1,20 @@
-import React from 'react';
-import { withStorageListener } from './withStorageListener';
-
+import React from "react";
+import { withStorageListener } from "./withStorageListener";
+import "./changeAlert.css";
 function ChangeAlert({ show, toggleShow }) {
-  if (show) { return <p> ¿Hubo Cambios ?</p> }
-  else { return <p>no hubo cambios</p> }
+  if (show) {
+    return (
+      <div>
+        <p> ¿Hubo Cambios ?</p>
+        <button onClick={() => toggleShow(false)}>Sincronizar tareas</button>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
-// conect HOC - inyect feature. 
+// conect HOC - inyect feature.
 const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
 
-// export HOC - componente con feature inyectada. 
-export { ChangeAlertWithStorageListener }
+// export HOC - componente con feature inyectada.
+export { ChangeAlertWithStorageListener };

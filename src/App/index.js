@@ -29,16 +29,14 @@ function App() {
     searchValue,
     setSearchValue,
     addTodo,
+    sincronizeTodos,
   } = useTodos();
 
   return (
     <React.Fragment>
       <TodoHeader loading={loading}>
         <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
-        <TodoSearch
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
       <TodoList
         error={error}
@@ -52,16 +50,16 @@ function App() {
         onEmptySearchResults={(searchText) => (
           <p> No hay resultados para {searchText} </p>
         )}
-      // Renderprop
-      // render={todo => (
-      //   <TodoItem
-      //     key={todo.text}
-      //     text={todo.text}
-      //     completed={todo.completed}
-      //     onComplete={() = > completeTodo(todo.text)}
-      //     onDelete={() => deleteTodo(todo.text)}
-      //   />
-      // )}
+        // Renderprop
+        // render={todo => (
+        //   <TodoItem
+        //     key={todo.text}
+        //     text={todo.text}
+        //     completed={todo.completed}
+        //     onComplete={() = > completeTodo(todo.text)}
+        //     onDelete={() => deleteTodo(todo.text)}
+        //   />
+        // )}
       >
         {/* Render Function */}
         {(todo) => (
@@ -82,7 +80,7 @@ function App() {
       )}
 
       <CreateTodoButton setOpenModal={setOpenModal} />
-      <ChangeAlertWithStorageListener />
+      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
     </React.Fragment>
   );
 }

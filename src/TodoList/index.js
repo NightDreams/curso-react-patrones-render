@@ -14,7 +14,7 @@ function TodoList(props) {
       {/* !! - convercion to boolean. Tenemos todos y search !match   */}
       {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
 
-      {props.searchedTodos.map(renderFunc)}
+      {!props.loading && props.searchedTodos.map(renderFunc)}
       {/* Render normal */}
       <ul>
         {props.children}
