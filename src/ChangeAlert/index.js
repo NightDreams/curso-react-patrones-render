@@ -1,7 +1,10 @@
 import React from "react";
-import { withStorageListener } from "./withStorageListener";
+import { useStorageListener } from "./useStorageListener";
 import "./changeAlert.css";
-function ChangeAlert({ show, toggleShow }) {
+
+function ChangeAlert({ sincronize }) {
+  const { show, toggleShow } = useStorageListener(sincronize);
+
   if (show) {
     return (
       <div className="ChangeAlert-bg">
@@ -11,7 +14,7 @@ function ChangeAlert({ show, toggleShow }) {
             navegador.
           </p>
           <p> ¿Quieres sincronizar tus TODOs? </p>
-          <button onClick={() => toggleShow(false)}>Yes!</button>
+          <button onClick={toggleShow}>Yes!</button>
         </div>
       </div>
     );
@@ -19,8 +22,5 @@ function ChangeAlert({ show, toggleShow }) {
     return null;
   }
 }
-// conect HOC - inyect feature.
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
 
-// export HOC - componente con feature inyectada.
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };
